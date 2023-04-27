@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     // Cards with attack to show
     GameObject[] cardsOnTable = new GameObject[6];
 
+    bool playerTurn;
+    bool pcTurn;
+
     bool onGame;
     int turn;
 
@@ -32,6 +35,8 @@ public class GameManager : MonoBehaviour
         setAtk();
 
         onGame=true;
+        playerTurn = true;
+        pcTurn = false;
     }
 
     void setAtk(){
@@ -47,14 +52,12 @@ public class GameManager : MonoBehaviour
 # endregion
 
 
-    IEnumerator Turn(){
-        
-        
+    // IEnumerator Turn(){
+    //     if (playerTurn){
 
-
-
-        yield return true;
-    }
+    //         yield return 
+    //     }
+    // }
 
 
 }

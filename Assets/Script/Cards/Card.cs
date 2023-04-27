@@ -7,6 +7,7 @@ public class Card : MonoBehaviour
     [SerializeField]
     int attack;
     public bool isFaceUp;
+    private bool selected;
 
 
     public void AssignAttack(int atk){
