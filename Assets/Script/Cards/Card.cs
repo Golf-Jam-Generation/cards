@@ -14,22 +14,17 @@ public class Card : MonoBehaviour
         attack = atk;
     }
 
-    IEnumerator RotateCard(){
+    public IEnumerator RotateCard(){
         int angle =0;
         float zRotation = transform.rotation.eulerAngles.z;
         while (angle<180){
             transform.Rotate(new Vector3(0,0,1), Space.Self);
-            Debug.Log(angle);
             angle ++;
             yield return new WaitForFixedUpdate();
         }
         isFaceUp = true;
         
     }
-
-    // void OnMouseDown(){
-    //     StartCoroutine(RotateCard());
-    // }
 
 
 }
