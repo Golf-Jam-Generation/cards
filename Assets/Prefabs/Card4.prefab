@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4958360065717290853}
   - component: {fileID: 4958360065717290852}
-  - component: {fileID: 814083461405665594}
   - component: {fileID: -8547041709680776695}
+  - component: {fileID: 814083461405665594}
   m_Layer: 0
   m_Name: Card4
   m_TagString: cards
@@ -97,6 +97,19 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!65 &-8547041709680776695
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4958360065717290851}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.26, y: 0.01, z: 0.352}
+  m_Center: {x: -0.01, y: -0.15, z: -0.006}
 --- !u!114 &814083461405665594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,19 +124,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: 0
   isFaceUp: 0
---- !u!65 &-8547041709680776695
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4958360065717290851}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.26, y: 0.01, z: 0.352}
-  m_Center: {x: -0.01, y: -0.15, z: -0.006}
 --- !u!1 &4958360066066737960
 GameObject:
   m_ObjectHideFlags: 0

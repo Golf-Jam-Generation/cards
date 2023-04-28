@@ -22,17 +22,22 @@ public class GameManager : MonoBehaviour
     #region bool turns
     bool playerTurn;
     bool pcTurn;
+    bool onGame;
     #endregion
 
-    bool onGame;
+    
     int turn;
+    int playerScore;
+    int pcScore;
 
     void Start(){
         setTable();
     }
 
     void Update(){
-        Turn();
+        if (turn<3){
+            Turn();
+        }
     }
 
     // Sets the table at the beggining of every round
@@ -47,10 +52,17 @@ public class GameManager : MonoBehaviour
             cardToSetAttack.AssignAttack(numberOfCard+1);
         }
         
-
+        // Turns and game
         onGame=true;
         playerTurn = true;
         pcTurn = false;
+
+        // number of turn 
+        turn =0;
+
+        //Scores
+        playerScore = 0;
+        pcScore = 0;
     }
 
     // Lets the player select a card
@@ -58,9 +70,6 @@ public class GameManager : MonoBehaviour
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 10.0f;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        Debug.DrawRay(mousePos, Camera.main.transform.position - mousePos, Color.white);
-
-        
 
         if (Input.GetMouseButtonDown(0)){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -88,6 +97,10 @@ public class GameManager : MonoBehaviour
         if (pcTurn){
             StartCoroutine(PcTurn());
         }
+
+        if (!playerTurn&&!pcTurn){
+            Comparation();
+        }
     }
     // Once the player selects a card, saves it and enables the pc to play
     void PlayerTurn(){
@@ -102,10 +115,9 @@ public class GameManager : MonoBehaviour
     IEnumerator PcTurn(){
         GameObject[] activeCards = GameObject.FindGameObjectsWithTag("cards");
         List<GameObject> availableCards = new List<GameObject>();
-
         foreach (GameObject activeCard in activeCards)
         {
-            if (!activeCard.GetComponent<Card>().isFaceUp){
+            if (!activeCard.GetComponent<Card>().isSelected){
                 availableCards.Add(activeCard);
             }
         }
@@ -117,7 +129,31 @@ public class GameManager : MonoBehaviour
     }
     
     void Comparation(){
-        
+        bool pcUp = cardSelectedByPc.GetComponent<Card>().isFaceUp;
+        bool playerUp = cardSelectedByPlayer.GetComponent<Card>().isFaceUp;
+        if(pcUp&&playerUp){
+            int pcAttack = cardSelectedByPc.GetComponent<Card>().attack;
+            int playerAttack = cardSelectedByPlayer.GetComponent<Card>().attack;
+            if (playerAttack > pcAttack){
+                playerScore ++;
+                Debug.Log("Player " + playerScore + "  Pc "+ pcScore);
+                //Add gem to player UI
+            }
+            else if (playerAttack < pcAttack){
+                pcScore++;
+                Debug.Log("Player " + playerScore + "  Pc "+ pcScore);
+                //Add gem to pc UI
+            }
+            else{
+                Debug.Log("Player " + playerScore + "  Pc "+ pcScore);
+                // Tie UI
+            }
+            Destroy(cardSelectedByPc);
+            Destroy(cardSelectedByPlayer);
+            playerTurn=true;
+            pcTurn =false;
+            turn++;
+        }
     }
     
     #endregion

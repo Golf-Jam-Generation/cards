@@ -108,8 +108,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4127721204627393915}
   - component: {fileID: 4127721204627393916}
-  - component: {fileID: 176737722559947407}
   - component: {fileID: -5763923713717479803}
+  - component: {fileID: 4394846951828047695}
   m_Layer: 0
   m_Name: Card2
   m_TagString: cards
@@ -195,20 +195,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &176737722559947407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4127721204627393917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07b8748b06cb0d54e8e1338897700eda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attack: 0
-  isFaceUp: 0
 --- !u!65 &-5763923713717479803
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -222,6 +208,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.26, y: 0.01, z: 0.352}
   m_Center: {x: -0.01, y: -0.15, z: -0.006}
+--- !u!114 &4394846951828047695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4127721204627393917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07b8748b06cb0d54e8e1338897700eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 0
+  isFaceUp: 0
 --- !u!1 &4127721204845955152
 GameObject:
   m_ObjectHideFlags: 0
