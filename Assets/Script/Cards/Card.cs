@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField]
-    int attack;
-    public bool isFaceUp;
-    private bool selected;
+    public int attack;
+    public bool isFaceUp= false;
+    public bool isSelected =false;
 
 
     public void AssignAttack(int atk){
@@ -15,15 +14,17 @@ public class Card : MonoBehaviour
     }
 
     public IEnumerator RotateCard(){
+        Transform childCard = this.gameObject.transform.GetChild(0);
         int angle =0;
-        float zRotation = transform.rotation.eulerAngles.z;
+        float zRotation = childCard.rotation.eulerAngles.z;
+        isSelected = true;
         while (angle<180){
-            transform.Rotate(new Vector3(0,0,1), Space.Self);
-            angle ++;
+            childCard.Rotate(new Vector3(0,0,2), Space.Self);
+            angle +=2;
             yield return new WaitForFixedUpdate();
         }
+        yield return new WaitForSeconds(3);
         isFaceUp = true;
-        
     }
 
 
