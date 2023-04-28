@@ -107,9 +107,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4513912851740568721}
   - component: {fileID: 4513912851740568720}
+  - component: {fileID: 7567316817119079419}
+  - component: {fileID: -3934066461072351658}
   m_Layer: 0
   m_Name: Card6
-  m_TagString: Untagged
+  m_TagString: cards
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,6 +194,33 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7567316817119079419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4513912851740568723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07b8748b06cb0d54e8e1338897700eda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attack: 0
+  isFaceUp: 0
+--- !u!65 &-3934066461072351658
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4513912851740568723}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.26, y: 0.01, z: 0.352}
+  m_Center: {x: -0.01, y: -0.15, z: -0.006}
 --- !u!1 &4513912852174065335
 GameObject:
   m_ObjectHideFlags: 0
