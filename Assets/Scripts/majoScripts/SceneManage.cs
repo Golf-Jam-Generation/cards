@@ -33,4 +33,10 @@ public class SceneManage : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Debug.Log("Reiniciado");
     }
+    //Boton de Cerrar ❌
+    public void Cerrar()
+    {
+        Application.Quit();
+        Debug.Log("Cerrado");
+    }
 }

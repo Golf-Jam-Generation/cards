@@ -1006,8 +1006,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 589697303}
         m_TargetAssemblyTypeName: SceneManage, Assembly-CSharp
-        m_MethodName: button
-        m_Mode: 5
+        m_MethodName: Cerrar
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
