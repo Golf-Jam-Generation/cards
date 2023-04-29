@@ -5,31 +5,39 @@ using UnityEngine.UI;
 
 public class UIManage : MonoBehaviour
 {
-    [SerializeField] GameObject gemaPlayer1;
-    [SerializeField] GameObject gemaPlayer2;
-    [SerializeField] GameObject gemaPlayer3;
 
-    [SerializeField] GameObject gemaEnemy1;
-    [SerializeField] GameObject gemaEnemy2;
-    [SerializeField] GameObject gemaEnemy3;
+    [SerializeField] GameObject[] gemaPlayer;
 
+    [SerializeField] GameObject[] gemaEnemy;
 
+    [SerializeField] GameObject losePage, winPage;
+
+   // [SerializeField] Button credits, menu, restart;
     [SerializeField] Button buttonPlayer, buttonEnemy;
   
-    public void Point()
+
+    public void Score(int score, string character)
     {
-        gemaPlayer1.SetActive(true);
-        gemaPlayer2.SetActive(true);
-        gemaPlayer3.SetActive(true);
-
-
-
+        if (character == "player")
+        {
+            gemaPlayer[score-1].SetActive(true);
+        }
+        else if (character == "enemy")
+        {
+            gemaEnemy[score - 1].SetActive(true);
+        }
     }
-    public void Point2()
+
+    public void WinLose(int playerScore, int pcScore)
     {
-        gemaEnemy1.SetActive(true);
-        gemaEnemy2.SetActive(true);
-        gemaEnemy3.SetActive(true);
+        if (playerScore > pcScore)
+        {
+            winPage.SetActive(true);
+        }
+        else
+        {
+            losePage.SetActive(true);
+        }
     }
 
 }
