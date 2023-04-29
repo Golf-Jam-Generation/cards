@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIManage : MonoBehaviour
 {
+    [SerializeField] GameObject panelSounds;
 
     [SerializeField] GameObject[] gemaPlayer;
 
@@ -14,7 +15,6 @@ public class UIManage : MonoBehaviour
 
    // [SerializeField] Button credits, menu, restart;
     [SerializeField] Button buttonPlayer, buttonEnemy;
-  
 
     public void Score(int score, string character)
     {
@@ -37,6 +37,18 @@ public class UIManage : MonoBehaviour
         else
         {
             losePage.SetActive(true);
+        }
+    }
+
+    public void SoundOptions()
+    {
+        if (panelSounds.activeInHierarchy)
+        {
+            panelSounds.SetActive(false);
+    }
+        else
+        {
+            panelSounds.SetActive(true);
         }
     }
 
