@@ -15,6 +15,20 @@ public class AudioManager : MonoBehaviour
     public AudioClip playerPoint;
     public AudioClip click;
 
+    public static AudioManager instance;
+    /*private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }*/
+
     private void Start()
     {
         musicSource.clip = menu;
@@ -24,5 +38,16 @@ public class AudioManager : MonoBehaviour
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
+    }
+    public void PlayGameplay(AudioClip clip)
+    {
+        musicSource.clip = gameplay;
+        musicSource.Play();
+    }
+
+    public void PlayMenu(AudioClip clip)
+    {
+        musicSource.clip = menu;
+        musicSource.Play();
     }
 }

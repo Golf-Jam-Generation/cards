@@ -7,12 +7,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneManage : MonoBehaviour
 {
-    
+    //AudioManager audio;
 
     //Codigo de cambio de escena🔁
-    public void button(string Scena)
+    public void button(string Scena, AudioClip audioClip)
     {
+        /*if (Scena == "Level")
+        {
+            audio.PlayGameplay(audioClip);
+        }*/
         SceneManager.LoadScene(Scena);
+        
     }
     //Boton de pausa 🛑
     public void Stop() 
