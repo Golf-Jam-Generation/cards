@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     void Start(){
         setTable();
+        Time.timeScale = 1;
     }
 
     void Update(){
