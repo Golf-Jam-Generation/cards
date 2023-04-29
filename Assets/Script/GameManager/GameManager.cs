@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     #region bool turns
     bool playerTurn;
     bool pcTurn;
-    bool onGame;
+    //bool onGame;
     #endregion
 
     
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         }
         
         // Turns and game
-        onGame=true;
+        //onGame=true;
         playerTurn = true;
         pcTurn = false;
 
@@ -171,6 +171,6 @@ public class GameManager : MonoBehaviour
     void Result()
     {
         uiManager.WinLose(playerScore, pcScore);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 }
