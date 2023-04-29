@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     // Cards with attack to show
     GameObject[] cardsOnTable = new GameObject[6];
+    [SerializeField] UIManage uiManager;
 
     #region card selection
     GameObject cardSelectedByPlayer;
@@ -32,11 +33,16 @@ public class GameManager : MonoBehaviour
 
     void Start(){
         setTable();
+        Time.timeScale = 1;
     }
 
     void Update(){
         if (turn<3){
             Turn();
+        }
+        else
+        {
+            Result();
         }
     }
 
@@ -138,15 +144,19 @@ public class GameManager : MonoBehaviour
                 playerScore ++;
                 Debug.Log("Player " + playerScore + "  Pc "+ pcScore);
                 //Add gem to player UI
+                uiManager.Score(playerScore, "player");
             }
             else if (playerAttack < pcAttack){
                 pcScore++;
                 Debug.Log("Player " + playerScore + "  Pc "+ pcScore);
                 //Add gem to pc UI
+                uiManager.Score(pcScore, "enemy");
             }
             else{
+                pcScore++;
                 Debug.Log("Player " + playerScore + "  Pc "+ pcScore);
                 // Tie UI
+                uiManager.Score(pcScore, "enemy");
             }
             Destroy(cardSelectedByPc);
             Destroy(cardSelectedByPlayer);
@@ -158,4 +168,9 @@ public class GameManager : MonoBehaviour
     
     #endregion
 
+    void Result()
+    {
+        uiManager.WinLose(playerScore, pcScore);
+        //Time.timeScale = 0;
+    }
 }
