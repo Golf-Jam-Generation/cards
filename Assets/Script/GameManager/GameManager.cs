@@ -171,6 +171,6 @@ public class GameManager : MonoBehaviour
     void Result()
     {
         uiManager.WinLose(playerScore, pcScore);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 }
