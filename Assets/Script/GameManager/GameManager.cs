@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private AudioManager sfx;
     // Position on the grid
     [SerializeField]
     Transform[] cardPos = new Transform[6];
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     void Start(){
         setTable();
         Time.timeScale = 1;
+        sfx = FindObjectOfType<AudioManager>();
     }
 
     void Update(){
@@ -80,6 +82,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
+            sfx.PlaySFX(sfx.click);
 
             if (Physics.Raycast(ray, out hit, 100)){
                 Card cardSelected;
@@ -145,18 +148,21 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Player " + playerScore + "  Pc "+ pcScore);
                 //Add gem to player UI
                 uiManager.Score(playerScore, "player");
+                sfx.PlaySFX(sfx.playerPoint);
             }
             else if (playerAttack < pcAttack){
                 pcScore++;
                 Debug.Log("Player " + playerScore + "  Pc "+ pcScore);
                 //Add gem to pc UI
                 uiManager.Score(pcScore, "enemy");
+                sfx.PlaySFX(sfx.pcPoint);
             }
             else{
                 pcScore++;
                 Debug.Log("Player " + playerScore + "  Pc "+ pcScore);
                 // Tie UI
                 uiManager.Score(pcScore, "enemy");
+                sfx.PlaySFX(sfx.pcPoint);
             }
             Destroy(cardSelectedByPc);
             Destroy(cardSelectedByPlayer);
