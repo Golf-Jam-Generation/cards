@@ -82,13 +82,14 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            sfx.PlaySFX(sfx.click);
+            //sfx.PlaySFX(sfx.click);
 
             if (Physics.Raycast(ray, out hit, 100)){
                 Card cardSelected;
                 cardSelected = hit.transform.gameObject.GetComponent<Card>();
                 if (cardSelected!=null){
                     StartCoroutine(cardSelected.RotateCard());
+                    sfx.PlaySFX(sfx.click);
                     return hit.transform.gameObject;
                 }
                 
