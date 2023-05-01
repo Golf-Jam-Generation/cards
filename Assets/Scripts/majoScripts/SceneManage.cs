@@ -7,8 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class SceneManage : MonoBehaviour
 {
-    
-
     //Codigo de cambio de escena🔁
     public void button(string Scena)
     {
