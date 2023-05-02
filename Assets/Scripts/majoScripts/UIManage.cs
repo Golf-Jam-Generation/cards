@@ -5,21 +5,23 @@ using UnityEngine.UI;
 
 public class UIManage : MonoBehaviour
 {
+    private SceneManage scene;
     private AudioManager music;
-
+    
     [SerializeField] GameObject panelSounds;
 
     [SerializeField] GameObject[] gemaPlayer;
 
     [SerializeField] GameObject[] gemaEnemy;
-
+    /*
     [SerializeField] GameObject losePage, winPage;
 
-   // [SerializeField] Button credits, menu, restart;
-    [SerializeField] Button buttonPlayer, buttonEnemy;
+    [SerializeField] Button credits, menu, restart;
+    [SerializeField] Button buttonPlayer, buttonEnemy;*/
 
     private void Start()
     {
+        scene = FindAnyObjectByType<SceneManage>();
         music = FindObjectOfType<AudioManager>();
     }
     public void Score(int score, string character)
@@ -38,12 +40,12 @@ public class UIManage : MonoBehaviour
     {
         if (playerScore > pcScore)
         {
-            winPage.SetActive(true);
+            scene.ChangeScence("Win");
             music.PlayMusic(music.victory);
         }
         else
         {
-            losePage.SetActive(true);
+            scene.ChangeScence("Lose");
             music.PlayMusic(music.lose);
         }
     }
