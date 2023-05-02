@@ -9,7 +9,7 @@ public class Mouse : MonoBehaviour
     Texture2D cursorActivo;
     void Start()
     {
-        Cursor.visible = false;
+        Cursor.visible = true;
         CambiarCursor("normal");
     }
 
