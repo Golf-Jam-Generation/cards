@@ -1579,6 +1579,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25edb653557273343b22d8d786a1826b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particles:
+  - {fileID: 2905110724970537316, guid: e13ea9c585e027f47a756d6a2824bf36, type: 3}
+  - {fileID: 2223364406289509503, guid: c22567755442acd4a86be75e5f402290, type: 3}
   cardPos:
   - {fileID: 483628895}
   - {fileID: 393250393}
@@ -3844,7 +3847,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870815056}
-  m_LocalRotation: {x: 0.40772316, y: 1e-45, z: -0, w: 0.9131056}
+  m_LocalRotation: {x: 0.40772316, y: -3e-45, z: 1e-45, w: 0.9131056}
   m_LocalPosition: {x: 0, y: 2.41, z: -0.25999987}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5287,7 +5290,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1147972143}
-  m_LocalRotation: {x: 0.40772316, y: 1e-45, z: 0, w: 0.9131056}
+  m_LocalRotation: {x: 0.40772316, y: -3e-45, z: 1e-45, w: 0.9131056}
   m_LocalPosition: {x: 0, y: 2.41, z: -0.25999987}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
