@@ -43,6 +43,18 @@ public class AudioManager : MonoBehaviour
             musicSource.clip = menu;
             musicSource.Play();
         }
+        else if (SceneManager.GetActiveScene().name == "Win")
+        {
+            musicSource.Pause();
+            musicSource.clip = victory;
+            musicSource.Play();
+        }
+        else if (SceneManager.GetActiveScene().name == "Lose")
+        {
+            musicSource.Pause();
+            musicSource.clip = lose;
+            musicSource.Play();
+        }
         /*scene = FindAnyObjectByType<SceneManage>();
         string conection="hola";
         scene.button(conection);
@@ -51,7 +63,7 @@ public class AudioManager : MonoBehaviour
         {
 
         }*/
-        
+
     }
 
     public void PlaySFX(AudioClip clip)
