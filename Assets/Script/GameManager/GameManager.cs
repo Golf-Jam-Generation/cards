@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public ParticleSystem[] particles;
+    private AudioManager sfx;
     // Position on the grid
     [SerializeField]
     Transform[] cardPos = new Transform[6];
@@ -34,6 +36,7 @@ public class GameManager : MonoBehaviour
     void Start(){
         setTable();
         Time.timeScale = 1;
+        sfx = FindObjectOfType<AudioManager>();
     }
 
     void Update(){
@@ -80,12 +83,14 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
+            //sfx.PlaySFX(sfx.click);
 
             if (Physics.Raycast(ray, out hit, 100)){
                 Card cardSelected;
                 cardSelected = hit.transform.gameObject.GetComponent<Card>();
                 if (cardSelected!=null){
                     StartCoroutine(cardSelected.RotateCard());
+                    sfx.PlaySFX(sfx.click);
                     return hit.transform.gameObject;
                 }
                 
@@ -114,6 +119,8 @@ public class GameManager : MonoBehaviour
         if (cardSelectedByPlayer!=null){
             playerTurn=false;
             pcTurn = true;
+            Transform childCardSelected = cardSelectedByPlayer.transform.GetChild(0);
+            Instantiate(particles[0],childCardSelected.position,Quaternion.identity);
         }
     }
     // finds tha active cards in the table, saves them and discard the card selected by the player
@@ -137,7 +144,9 @@ public class GameManager : MonoBehaviour
     void Comparation(){
         bool pcUp = cardSelectedByPc.GetComponent<Card>().isFaceUp;
         bool playerUp = cardSelectedByPlayer.GetComponent<Card>().isFaceUp;
-        if(pcUp&&playerUp){
+        Transform childCardSelectedbyPlayer = cardSelectedByPlayer.transform.GetChild(0);
+        Transform childCardSelectedbyPc = cardSelectedByPc.transform.GetChild(0);
+        if (pcUp&&playerUp){
             int pcAttack = cardSelectedByPc.GetComponent<Card>().attack;
             int playerAttack = cardSelectedByPlayer.GetComponent<Card>().attack;
             if (playerAttack > pcAttack){
@@ -145,18 +154,27 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Player " + playerScore + "  Pc "+ pcScore);
                 //Add gem to player UI
                 uiManager.Score(playerScore, "player");
+                sfx.PlaySFX(sfx.playerPoint);
+                Instantiate(particles[0], childCardSelectedbyPlayer.position, Quaternion.identity);
+                Instantiate(particles[0], childCardSelectedbyPc.position, Quaternion.identity);
             }
             else if (playerAttack < pcAttack){
                 pcScore++;
                 Debug.Log("Player " + playerScore + "  Pc "+ pcScore);
                 //Add gem to pc UI
                 uiManager.Score(pcScore, "enemy");
+                sfx.PlaySFX(sfx.pcPoint);
+                Instantiate(particles[1], childCardSelectedbyPlayer.position, Quaternion.identity);
+                Instantiate(particles[1], childCardSelectedbyPc.position, Quaternion.identity);
             }
             else{
                 pcScore++;
                 Debug.Log("Player " + playerScore + "  Pc "+ pcScore);
                 // Tie UI
                 uiManager.Score(pcScore, "enemy");
+                sfx.PlaySFX(sfx.pcPoint);
+                Instantiate(particles[1], childCardSelectedbyPlayer.position, Quaternion.identity);
+                Instantiate(particles[1], childCardSelectedbyPc.position, Quaternion.identity);
             }
             Destroy(cardSelectedByPc);
             Destroy(cardSelectedByPlayer);
