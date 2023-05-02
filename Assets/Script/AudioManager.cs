@@ -33,13 +33,13 @@ public class AudioManager : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "Level")
         {
-            musicSource.Stop();
+            musicSource.Pause();
             musicSource.clip = gameplay;
             musicSource.Play();
         }
         else if(SceneManager.GetActiveScene().name == "mainMenu" || SceneManager.GetActiveScene().name == "Instrucciones")
         {
-            musicSource.Stop();
+            musicSource.Pause();
             musicSource.clip = menu;
             musicSource.Play();
         }
@@ -65,24 +65,12 @@ public class AudioManager : MonoBehaviour
         musicSource.clip = clip;
         musicSource.Play();
     }
-    public void StopMusic(AudioClip clip)
+    /*public void StopMusic(AudioClip clip)
     {
         musicSource.clip = clip;
-        musicSource.Stop();
+        musicSource.Pause();
     }
-    /*public void PlayGameplay(AudioClip clip)
-    {
-        musicSource.clip = gameplay;
-        musicSource.Play();
-    }
-
-    public void PlayMenu(AudioClip clip)
-    {
-        musicSource.clip = menu;
-        musicSource.Play();
-    }
-
-    public void SwitchPlay()
+   public void SwitchPlay()
     {
         if (musicSource.clip == menu)
         {
