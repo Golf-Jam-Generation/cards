@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public ParticleSystem[] particles;
     private AudioManager sfx;
     // Position on the grid
     [SerializeField]
@@ -118,6 +119,8 @@ public class GameManager : MonoBehaviour
         if (cardSelectedByPlayer!=null){
             playerTurn=false;
             pcTurn = true;
+            Transform childCardSelected = cardSelectedByPlayer.transform.GetChild(0);
+            Instantiate(particles[0],childCardSelected.position,Quaternion.identity);
         }
     }
     // finds tha active cards in the table, saves them and discard the card selected by the player
@@ -141,7 +144,9 @@ public class GameManager : MonoBehaviour
     void Comparation(){
         bool pcUp = cardSelectedByPc.GetComponent<Card>().isFaceUp;
         bool playerUp = cardSelectedByPlayer.GetComponent<Card>().isFaceUp;
-        if(pcUp&&playerUp){
+        Transform childCardSelectedbyPlayer = cardSelectedByPlayer.transform.GetChild(0);
+        Transform childCardSelectedbyPc = cardSelectedByPc.transform.GetChild(0);
+        if (pcUp&&playerUp){
             int pcAttack = cardSelectedByPc.GetComponent<Card>().attack;
             int playerAttack = cardSelectedByPlayer.GetComponent<Card>().attack;
             if (playerAttack > pcAttack){
@@ -150,6 +155,8 @@ public class GameManager : MonoBehaviour
                 //Add gem to player UI
                 uiManager.Score(playerScore, "player");
                 sfx.PlaySFX(sfx.playerPoint);
+                Instantiate(particles[0], childCardSelectedbyPlayer.position, Quaternion.identity);
+                Instantiate(particles[0], childCardSelectedbyPc.position, Quaternion.identity);
             }
             else if (playerAttack < pcAttack){
                 pcScore++;
@@ -157,6 +164,8 @@ public class GameManager : MonoBehaviour
                 //Add gem to pc UI
                 uiManager.Score(pcScore, "enemy");
                 sfx.PlaySFX(sfx.pcPoint);
+                Instantiate(particles[1], childCardSelectedbyPlayer.position, Quaternion.identity);
+                Instantiate(particles[1], childCardSelectedbyPc.position, Quaternion.identity);
             }
             else{
                 pcScore++;
@@ -164,6 +173,8 @@ public class GameManager : MonoBehaviour
                 // Tie UI
                 uiManager.Score(pcScore, "enemy");
                 sfx.PlaySFX(sfx.pcPoint);
+                Instantiate(particles[1], childCardSelectedbyPlayer.position, Quaternion.identity);
+                Instantiate(particles[1], childCardSelectedbyPc.position, Quaternion.identity);
             }
             Destroy(cardSelectedByPc);
             Destroy(cardSelectedByPlayer);
