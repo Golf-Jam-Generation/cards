@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManage : MonoBehaviour
@@ -43,10 +44,14 @@ public class UIManage : MonoBehaviour
             scene.ChangeScence("Win");
             music.PlayMusic(music.victory);
         }
-        else
+        else if (playerScore < pcScore) 
         {
             scene.ChangeScence("Lose");
             music.PlayMusic(music.lose);
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 

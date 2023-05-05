@@ -169,11 +169,13 @@ public class GameManager : MonoBehaviour
             }
             else{
                 pcScore++;
+                playerScore++;
                 Debug.Log("Player " + playerScore + "  Pc "+ pcScore);
                 // Tie UI
                 uiManager.Score(pcScore, "enemy");
-                sfx.PlaySFX(sfx.pcPoint);
-                Instantiate(particles[1], childCardSelectedbyPlayer.position, Quaternion.identity);
+                uiManager.Score(playerScore, "player");
+                //sfx.PlaySFX(sfx.pcPoint);
+                Instantiate(particles[0], childCardSelectedbyPlayer.position, Quaternion.identity);
                 Instantiate(particles[1], childCardSelectedbyPc.position, Quaternion.identity);
             }
             Destroy(cardSelectedByPc);
