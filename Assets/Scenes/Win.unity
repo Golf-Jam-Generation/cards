@@ -869,7 +869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &572895209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -882,7 +882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b28bff649e46e54f98350109bf6f1b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScaleCursor: 200
+  ScaleCursor: 120
   cursorMano: {fileID: 2800000, guid: 78d45ce2d66baea47a4b16ee35673e9a, type: 3}
   cursorNormal: {fileID: 2800000, guid: 78d45ce2d66baea47a4b16ee35673e9a, type: 3}
 --- !u!4 &572895210
